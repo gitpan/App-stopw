@@ -1,7 +1,7 @@
 #!perl
 
-our $DATE = '2014-09-09'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $DATE = '2014-09-11'; # DATE
+our $VERSION = '0.02'; # VERSION
 
 use 5.010001;
 use strict;
@@ -12,7 +12,7 @@ use Term::ReadKey;
 use Time::HiRes qw(time sleep);
 
 my %opts = (
-    update_delay=>0.01,
+    update_delay=>0.02,
 );
 GetOptions(
     'update-delay|d=f' => \$opts{update_delay},
@@ -67,7 +67,7 @@ while (1) {
             $time0 = time();
             $time      = $time0 if $stopped;
             $stoptime  = $time0 if $stopped;
-        } elsif ($key eq 's' || $key eq 'S') {
+        } elsif ($key eq "\n" || $key eq 's' || $key eq 'S') {
             $stopped = !$stopped;
             $stoptime = time() if $stopped;
             $time0 += (time()-$stoptime) if !$stopped;
@@ -82,7 +82,7 @@ while (1) {
         my $seconds = int( $elapsed-$hours*3600-$minutes*60);
         my $millis  = int(($elapsed-$hours*3600-$minutes*60-$seconds)*1000);
 
-        my $str = sprintf("%02d:%02d:%02d.%03d",
+        my $str = sprintf("%02d:%02d:%02d.%03d ",
                           $hours, $minutes, $seconds, $millis);
         print $str;
         sleep $opts{update_delay};
@@ -106,7 +106,7 @@ stopw - A console-based virtual stopwatch and timer
 
 =head1 VERSION
 
-This document describes version 0.01 of stopw (from Perl distribution App-stopw), released on 2014-09-09.
+This document describes version 0.02 of stopw (from Perl distribution App-stopw), released on 2014-09-11.
 
 =head1 SYNOPSIS
 
@@ -127,7 +127,7 @@ program, you can press:
 
 This will print the current value of timer and move to the next line.
 
-=item * C<S> to start/stop the timer
+=item * C<S> (or Enter) to start/stop the timer
 
 =item * C<Q> (or Ctrl-C) to quit the program
 
@@ -135,7 +135,7 @@ This will print the current value of timer and move to the next line.
 
 =head1 OPTIONS
 
-=head2 --update-delay, -d (float, default: 0.01)
+=head2 --update-delay, -d (float, default: 0.02)
 
 =head1 SEE ALSO
 

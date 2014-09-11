@@ -1,7 +1,7 @@
 package App::stopw;
 
-our $DATE = '2014-09-09'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $DATE = '2014-09-11'; # DATE
+our $VERSION = '0.02'; # VERSION
 
 1;
 # ABSTRACT: A console-based virtual stopwatch and timer
@@ -18,7 +18,7 @@ App::stopw - A console-based virtual stopwatch and timer
 
 =head1 VERSION
 
-This document describes version 0.01 of App::stopw (from Perl distribution App-stopw), released on 2014-09-09.
+This document describes version 0.02 of App::stopw (from Perl distribution App-stopw), released on 2014-09-11.
 
 =head1 SYNOPSIS
 
